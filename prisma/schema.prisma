@@ -15,5 +15,5 @@ model Coffee {
   description String
   price       String
 
-  @@map("Coffees")
+  @@map("coffees")
 }
