@@ -28,5 +28,20 @@ model AddressUser {
   city         String
   uf           String
 
+  boyCoffees BoyCoffee[]
+
   @@map("addressUsers")
+}
+
+model BoyCoffee {
+  id            String       @id @default(uuid())
+  name          String
+  image         String
+  total_price   String
+  count         Int
+
+  addressUserId String
+  AddressUser   AddressUser @relation(fields: [addressUserId], references: [id])
+
+  @@map("boyCoffees")
 }
