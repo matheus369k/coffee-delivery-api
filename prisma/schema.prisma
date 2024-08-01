@@ -17,3 +17,16 @@ model Coffee {
 
   @@map("coffees")
 }
+
+model AddressUser {
+  id           String @id @default(uuid())
+  cep          String
+  street       String
+  number       Int
+  complement   String
+  neighborhood String
+  city         String
+  uf           String
+
+  @@map("addressUsers")
+}
