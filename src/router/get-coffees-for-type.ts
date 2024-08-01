@@ -3,17 +3,17 @@ import { z } from 'zod';
 import { prisma } from '../lib/prisma.js';
 
 const paramsZodType = z.object({
-    tag: z.string().min(4)
+    type: z.string().min(4)
 })
 
-export async function getCoffeesForTag(app: Express) {
-    app.get('/coffees/:tag', async (request: Request, response: Response) => {
-        const { tag } = paramsZodType.parse(request.params);
+export async function getCoffeesForType(app: Express) {
+    app.get('/coffees/:type', async (request: Request, response: Response) => {
+        const { type } = paramsZodType.parse(request.params);
 
         const coffees = await prisma.coffee.findMany({
             where: {
                 tags: {
-                    has: tag,
+                    has: type,
                 }
             }
         })
