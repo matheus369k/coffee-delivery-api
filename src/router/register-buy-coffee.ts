@@ -13,7 +13,7 @@ const bodyZodType = z.object({
     count: z.coerce.number(),
 })
 
-export async function createBuyCoffee(app: Express) {
+export async function registerBuyCoffee(app: Express) {
     app.post('/user/:userId', async (request: Request, response: Response) => {
         const { userId } = paramsZodType.parse(request.params)
         const { count, image, name, total_price } = bodyZodType.parse(request.body)

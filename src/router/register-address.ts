@@ -12,7 +12,7 @@ const FormUserZodSchema = z.object({
     uf: z.string().min(2),
 });
 
-export async function createNewUserRegister(app: Express) {
+export async function registerAddress(app: Express) {
     app.post('/user/register', async (request: Request, response: Response) => {
         const { cep, city, complement, neighborhood, number, street, uf } = FormUserZodSchema.parse(request.body)
 

@@ -1,20 +1,20 @@
 import express from 'express'
 import { env } from './env.js'
-import { addCoffee } from './router/add-coffee.js'
+import { registerCoffee } from './router/register-coffee.js'
 import { getAllCoffees } from './router/get-all-coffees.js'
 import { getCoffeesForType } from './router/get-coffees-for-type.js'
-import { createNewUserRegister } from './router/register-new-user.js'
-import { createBuyCoffee } from './router/create-buy-coffee.js'
+import { registerAddress } from './router/register-address.js'
+import { registerBuyCoffee } from './router/register-buy-coffee.js'
 
 const app = express()
 
 app.use(express.json())
 
-addCoffee(app)
+registerCoffee(app)
 getAllCoffees(app)
 getCoffeesForType(app)
-createNewUserRegister(app)
-createBuyCoffee(app)
+registerAddress(app)
+registerBuyCoffee(app)
 
 app.listen(env.PORT, () => {
     console.log('Server running!')

@@ -11,7 +11,7 @@ const bodyZodValidate = z.object({
 
 })
 
-export async function addCoffee(app: Express) {
+export async function registerCoffee(app: Express) {
     app.post('/coffees', async (request: Request, response: Response) => {
         const { name, tags, image, description, price } = bodyZodValidate.parse(request.body);
 
