@@ -2,7 +2,7 @@ import { Express, Request, Response } from 'express'
 import { z } from 'zod'
 import { prisma } from '../lib/prisma.js';
 
-const FormUserZodSchema = z.object({
+const addressZodType = z.object({
     cep: z.coerce.string().min(8),
     street: z.string().min(4),
     number: z.coerce.number().min(1),
@@ -14,7 +14,7 @@ const FormUserZodSchema = z.object({
 
 export async function registerAddress(app: Express) {
     app.post('/user/register', async (request: Request, response: Response) => {
-        const { cep, city, complement, neighborhood, number, street, uf } = FormUserZodSchema.parse(request.body)
+        const { cep, city, complement, neighborhood, number, street, uf } = addressZodType.parse(request.body)
 
         const addressUser = await prisma.addressUser.create({
             data: {
