@@ -24,7 +24,7 @@
         "src/lib/*"
       ],
       "_types/*": [
-        "src/@types/*"
+        "src/_types/*"
       ],
     }
   }
