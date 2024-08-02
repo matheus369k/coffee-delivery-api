@@ -2,7 +2,7 @@ import { z } from "zod"
 import { prisma } from "../lib/prisma.js"
 import { Express, Request, Response } from 'express'
 
-const bodyZodValidate = z.object({
+const bodySchema = z.object({
     name: z.string().min(4),
     tags: z.array(z.string().min(4)),
     image: z.string().url(),
@@ -13,7 +13,7 @@ const bodyZodValidate = z.object({
 
 export async function registerCoffee(app: Express) {
     app.post('/coffees', async (request: Request, response: Response) => {
-        const { name, tags, image, description, price } = bodyZodValidate.parse(request.body);
+        const { name, tags, image, description, price } = bodySchema.parse(request.body);
 
         const coffees = await prisma.coffee.create({
             data: {

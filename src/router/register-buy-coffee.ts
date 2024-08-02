@@ -1,6 +1,7 @@
 import { Express, Request, Response } from 'express'
 import { z } from 'zod'
 import { prisma } from '../lib/prisma.js'
+import { paramsSchema } from '../@types/types.js'
 
 const paramsZodType = z.object({
     userId: z.string().uuid(),
@@ -15,7 +16,7 @@ const bodyZodType = z.object({
 
 export async function registerBuyCoffee(app: Express) {
     app.post('/user/:userId', async (request: Request, response: Response) => {
-        const { userId } = paramsZodType.parse(request.params)
+        const { userId } = paramsSchema.parse(request.params)
         const { count, image, name, total_price } = bodyZodType.parse(request.body)
 
         const addressUsers = await prisma.addressUser.findUnique({
