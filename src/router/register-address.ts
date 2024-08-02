@@ -1,6 +1,6 @@
 import { Express, Request, Response } from 'express';
-import { addressSchema } from '../@types/types.js';
-import { prisma } from '../lib/prisma.js';
+import { addressSchema } from '_types/schema.js';
+import { prisma } from '@lib/prisma.js';
 
 export function registerAddress(app: Express) {
     app.post('/user/register', async (request: Request, response: Response) => {

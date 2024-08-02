@@ -1,12 +1,12 @@
-import { registerCoffee } from './router/register-coffee.js';
-import { getAllCoffees } from './router/get-all-coffees.js';
-import { getCoffeesForType } from './router/get-coffees-for-type.js';
-import { registerAddress } from './router/register-address.js';
-import { registerBuyCoffee } from './router/register-buy-coffee.js';
-import { updateAddress } from './router/update-address.js';
-import { getAddress } from './router/get-address.js';
+import { registerCoffee } from '@router/register-coffee.js';
+import { getAllCoffees } from '@router/get-all-coffees.js';
+import { getCoffeesForType } from '@router/get-coffees-for-type.js';
+import { registerAddress } from '@router/register-address.js';
+import { registerBuyCoffee } from '@router/register-buy-coffee.js';
+import { updateAddress } from '@router/update-address.js';
+import { getAddress } from '@router/get-address.js';
 import express from 'express';
-import { env } from './env.js';
+import { env } from '_types/env.js';
 
 const app = express();
 

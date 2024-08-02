@@ -1,6 +1,6 @@
 import { Express, Response, Request } from 'express';
+import { prisma } from '@lib/prisma.js';
 import { z } from 'zod';
-import { prisma } from '../lib/prisma.js';
 
 const paramsZodType = z.object({
     type: z.string().min(4),

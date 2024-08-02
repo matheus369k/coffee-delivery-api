@@ -11,6 +11,21 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16"
+    "moduleResolution": "node16",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@router/*": [
+        "src/router/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "_types/*": [
+        "src/@types/*"
+      ],
+    }
   }
 }

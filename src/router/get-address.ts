@@ -1,6 +1,6 @@
 import { Express, Request, Response } from 'express';
-import { paramsSchema } from '../@types/types.js';
-import { prisma } from '../lib/prisma.js';
+import { paramsSchema } from '_types/schema.js';
+import { prisma } from '@lib/prisma.js';
 
 export function getAddress(app: Express) {
     app.get('/user/:userId', async (request: Request, response: Response) => {

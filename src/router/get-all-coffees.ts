@@ -1,5 +1,5 @@
 import { Express, Request, Response } from 'express';
-import { prisma } from '../lib/prisma.js';
+import { prisma } from '@lib/prisma.js';
 
 export function getAllCoffees(app: Express) {
     app.get('/coffees', async (request_: Request, response: Response) => {

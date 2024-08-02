@@ -1,6 +1,6 @@
 import { Express, Request, Response } from 'express';
-import { prisma } from '../lib/prisma.js';
-import { paramsSchema } from '../@types/types.js';
+import { paramsSchema } from '_types/schema.js';
+import { prisma } from '@lib/prisma.js';
 import { z } from 'zod';
 
 const bodyZodType = z.object({

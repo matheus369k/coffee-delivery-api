@@ -1,6 +1,6 @@
-import { addressSchema, paramsSchema } from '../@types/types.js';
+import { addressSchema, paramsSchema } from '_types/schema.js';
 import { Express, Request, Response } from 'express';
-import { prisma } from '../lib/prisma.js';
+import { prisma } from '@lib/prisma.js';
 
 export function updateAddress(app: Express) {
     app.put('/user/:userId', async (request: Request, response: Response) => {
