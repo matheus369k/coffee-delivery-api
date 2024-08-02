@@ -1,30 +1,26 @@
-import { Express, Request, Response } from 'express'
-import { z } from 'zod'
-import { prisma } from '../lib/prisma.js'
-import { paramsSchema } from '../@types/types.js'
-
-const paramsZodType = z.object({
-    userId: z.string().uuid(),
-})
+import { Express, Request, Response } from 'express';
+import { prisma } from '../lib/prisma.js';
+import { paramsSchema } from '../@types/types.js';
+import { z } from 'zod';
 
 const bodyZodType = z.object({
     name: z.string().min(4),
     image: z.string().url(),
     total_price: z.string(),
     count: z.coerce.number(),
-})
+});
 
-export async function registerBuyCoffee(app: Express) {
+export function registerBuyCoffee(app: Express) {
     app.post('/user/:userId', async (request: Request, response: Response) => {
-        const { userId } = paramsSchema.parse(request.params)
-        const { count, image, name, total_price } = bodyZodType.parse(request.body)
+        const { userId } = paramsSchema.parse(request.params);
+        const { count, image, name, total_price } = bodyZodType.parse(request.body);
 
         const addressUsers = await prisma.addressUser.findUnique({
-            where: { id: userId }
-        })
+            where: { id: userId },
+        });
 
         if (!addressUsers) {
-            throw new Error('User not found')
+            throw new Error('User not found');
         }
 
         const boyCoffee = await prisma.boyCoffee.create({
@@ -33,10 +29,10 @@ export async function registerBuyCoffee(app: Express) {
                 image,
                 total_price,
                 count,
-                addressUserId: userId
-            }
-        })
+                addressUserId: userId,
+            },
+        });
 
-        response.send({ boyCoffeeId: boyCoffee.id })
-    })
+        response.send({ boyCoffeeId: boyCoffee.id });
+    });
 }

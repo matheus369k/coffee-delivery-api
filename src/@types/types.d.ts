@@ -1,8 +1,8 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const paramsSchema = z.object({
-    userId: z.string().uuid()
-})
+    userId: z.string().uuid(),
+});
 
 export const addressSchema = z.object({
     cep: z.coerce.string().min(8),

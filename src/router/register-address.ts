@@ -1,11 +1,10 @@
-import { Express, Request, Response } from 'express'
-import { z } from 'zod'
-import { prisma } from '../lib/prisma.js';
+import { Express, Request, Response } from 'express';
 import { addressSchema } from '../@types/types.js';
+import { prisma } from '../lib/prisma.js';
 
-export async function registerAddress(app: Express) {
+export function registerAddress(app: Express) {
     app.post('/user/register', async (request: Request, response: Response) => {
-        const { cep, city, complement, neighborhood, number, street, uf } = addressSchema.parse(request.body)
+        const { cep, city, complement, neighborhood, number, street, uf } = addressSchema.parse(request.body);
 
         const addressUser = await prisma.addressUser.create({
             data: {
@@ -15,14 +14,14 @@ export async function registerAddress(app: Express) {
                 neighborhood,
                 number,
                 street,
-                uf
-            }
-        })
+                uf,
+            },
+        });
 
         if (!addressUser) {
-            throw new Error('AddressUser not found')
+            throw new Error('AddressUser not found');
         }
 
-        response.send({ addressUserId: addressUser.id })
-    })
+        response.send({ addressUserId: addressUser.id });
+    });
 }

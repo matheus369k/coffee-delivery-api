@@ -1,12 +1,12 @@
-import { Express, Response, Request } from 'express'
+import { Express, Response, Request } from 'express';
 import { z } from 'zod';
 import { prisma } from '../lib/prisma.js';
 
 const paramsZodType = z.object({
-    type: z.string().min(4)
-})
+    type: z.string().min(4),
+});
 
-export async function getCoffeesForType(app: Express) {
+export function getCoffeesForType(app: Express) {
     app.get('/coffees/:type', async (request: Request, response: Response) => {
         const { type } = paramsZodType.parse(request.params);
 
@@ -14,14 +14,14 @@ export async function getCoffeesForType(app: Express) {
             where: {
                 tags: {
                     has: type,
-                }
-            }
-        })
+                },
+            },
+        });
 
         if (!coffees) {
-            throw new Error("Coffees Not found")
+            throw new Error('Coffees Not found');
         }
 
-        response.send({ coffees: coffees })
-    })
+        response.send({ coffees: coffees });
+    });
 }

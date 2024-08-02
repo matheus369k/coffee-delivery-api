@@ -5,6 +5,7 @@
     "lib": [
       "es2023"
     ],
+    "allowJs": true,
     "module": "node16",
     "target": "es2022",
     "strict": true,

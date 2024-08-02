@@ -1,19 +1,18 @@
-import { Express, Request, Response } from 'express'
-import { z } from 'zod'
-import { prisma } from '../lib/prisma.js';
 import { addressSchema, paramsSchema } from '../@types/types.js';
+import { Express, Request, Response } from 'express';
+import { prisma } from '../lib/prisma.js';
 
-export async function updateAddress(app: Express) {
+export function updateAddress(app: Express) {
     app.put('/user/:userId', async (request: Request, response: Response) => {
-        const { userId } = paramsSchema.parse(request.params)
-        const { cep, city, complement, neighborhood, number, street, uf } = addressSchema.parse(request.body)
+        const { userId } = paramsSchema.parse(request.params);
+        const { cep, city, complement, neighborhood, number, street, uf } = addressSchema.parse(request.body);
 
         const addressUsers = await prisma.addressUser.findUnique({
-            where: { id: userId }
-        })
+            where: { id: userId },
+        });
 
         if (!addressUsers) {
-            throw new Error('AddressUser not found')
+            throw new Error('AddressUser not found');
         }
 
         await prisma.addressUser.update({
@@ -26,9 +25,9 @@ export async function updateAddress(app: Express) {
                 number,
                 street,
                 uf,
-            }
-        })
+            },
+        });
 
-        response.send({ userId: addressUsers.id })
-    })
+        response.send({ userId: addressUsers.id });
+    });
 }
