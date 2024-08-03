@@ -7,6 +7,7 @@ const bodyZodType = z.object({
     form_of_payment: z.string().min(4),
     coffees_list: z.array(
         z.object({
+            id: z.string().uuid(),
             name: z.string().min(4),
             image: z.string().url(),
             total_price: z.string(),
