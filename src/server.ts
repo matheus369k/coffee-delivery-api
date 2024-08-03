@@ -1,4 +1,4 @@
-import { registerCoffee } from '@router/register-coffee.js';
+import { registerManyCoffees } from '@/router/register-many-coffees.js';
 import { getAllCoffees } from '@router/get-all-coffees.js';
 import { getCoffeesForType } from '@router/get-coffees-for-type.js';
 import { registerAddress } from '@router/register-address.js';
@@ -18,7 +18,7 @@ app.use(
     }),
 );
 
-registerCoffee(app);
+registerManyCoffees(app);
 getAllCoffees(app);
 getCoffeesForType(app);
 registerAddress(app);
