@@ -5,12 +5,14 @@ import { registerAddress } from '@router/register-address.js';
 import { registerBuyCoffee } from '@router/register-buy-coffee.js';
 import { updateAddress } from '@router/update-address.js';
 import { getAddress } from '@router/get-address.js';
-import express from 'express';
 import { env } from '_types/env.js';
+import express from 'express';
+import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 registerCoffee(app);
 getAllCoffees(app);
