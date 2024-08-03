@@ -16,7 +16,7 @@ const bodyZodType = z.object({
 });
 
 export function registerShoppingCoffees(app: Express) {
-    app.post('/user/:userId', async (request: Request, response: Response) => {
+    app.post('/shopping/:userId', async (request: Request, response: Response) => {
         const { userId } = paramsSchema.parse(request.params);
         const { coffees_list, form_of_payment } = bodyZodType.parse(request.body);
 
@@ -34,9 +34,7 @@ export function registerShoppingCoffees(app: Express) {
                 addressUserId: userId,
                 boyCoffees: {
                     createMany: {
-                        data: {
-                            ...coffees_list,
-                        },
+                        data: [...coffees_list],
                     },
                 },
             },
