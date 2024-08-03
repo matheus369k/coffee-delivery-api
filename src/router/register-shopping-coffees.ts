@@ -28,7 +28,7 @@ export function registerShoppingCoffees(app: Express) {
             throw new Error('User not found');
         }
 
-        const boyCoffee = await prisma.shoppingCoffeeList.create({
+        const shoppingCoffeeList = await prisma.shoppingCoffeeList.create({
             data: {
                 form_of_payment: form_of_payment,
                 addressUserId: userId,
@@ -42,6 +42,6 @@ export function registerShoppingCoffees(app: Express) {
             },
         });
 
-        response.send({ boyCoffeeId: boyCoffee.id });
+        response.send({ shoppingCoffeeListId: shoppingCoffeeList.id });
     });
 }
