@@ -1,7 +1,6 @@
 import { Express, Request, Response } from 'express';
 import { prisma } from '@lib/prisma.js';
 import { z } from 'zod';
-import cors from 'cors';
 
 const bodySchema = z.array(
     z.object({
@@ -14,23 +13,17 @@ const bodySchema = z.array(
 );
 
 export function registerManyCoffees(app: Express) {
-    app.post(
-        '/coffees',
-        cors({
-            origin: 'http://localhost:3333/',
-        }),
-        async (request: Request, response: Response) => {
-            const coffeesList = bodySchema.parse(request.body);
+    app.post('/coffees', async (request: Request, response: Response) => {
+        const coffeesList = bodySchema.parse(request.body);
 
-            const coffees = await prisma.coffee.createMany({
-                data: [...coffeesList],
-            });
+        const coffees = await prisma.coffee.createMany({
+            data: [...coffeesList],
+        });
 
-            if (!coffees) {
-                throw new Error('Coffee not found');
-            }
+        if (!coffees) {
+            throw new Error('Coffee not found');
+        }
 
-            response.send({ coffeesCount: coffees.count });
-        },
-    );
+        response.send({ coffeesCount: coffees.count });
+    });
 }
