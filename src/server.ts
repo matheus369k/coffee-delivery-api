@@ -7,16 +7,10 @@ import { updateAddress } from '@router/update-address.js';
 import { getAddress } from '@router/get-address.js';
 import { env } from '_types/env.js';
 import express from 'express';
-import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
-app.use(
-    cors({
-        origin: '*',
-    }),
-);
 
 registerManyCoffees(app);
 getAllCoffees(app);
