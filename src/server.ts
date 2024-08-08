@@ -4,15 +4,16 @@ import { getCoffeesForType } from '@router/get-coffees-for-type.js';
 import { registerAddress } from '@router/register-address.js';
 import { registerShoppingCoffees } from '@/router/register-shopping-coffees.js';
 import { updateAddress } from '@router/update-address.js';
-import { getAddress } from '@router/get-address.js';
+import { getConfirm } from '@/router/get-confirm.js';
 import { env } from '_types/env.js';
 import express from 'express';
 import cors from 'cors';
+import { getCheckoutAddress } from './router/get-checkout-address.js';
 
 const app = express();
 
 app.use(express.json());
-app.options('*', cors());
+app.use('*', cors());
 
 registerManyCoffees(app);
 getAllCoffees(app);
@@ -20,7 +21,8 @@ getCoffeesForType(app);
 registerAddress(app);
 registerShoppingCoffees(app);
 updateAddress(app);
-getAddress(app);
+getConfirm(app);
+getCheckoutAddress(app);
 
 app.listen(env.PORT, () => {
     console.log('Server running!');
