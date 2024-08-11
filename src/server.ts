@@ -9,6 +9,7 @@ import { env } from '_types/env.js';
 import express from 'express';
 import cors from 'cors';
 import { getCheckoutAddress } from './router/get-checkout-address.js';
+import { getLocation } from './router/get-location.js';
 
 const app = express();
 
@@ -23,6 +24,7 @@ registerShoppingCoffees(app);
 updateAddress(app);
 getConfirm(app);
 getCheckoutAddress(app);
+getLocation(app);
 
 app.listen(env.PORT, () => {
     console.log('Server running!');
