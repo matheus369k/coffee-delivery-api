@@ -18,15 +18,19 @@
         "src/*"
       ],
       "@router/*": [
-        "src/router/*"
+        "src/routes/*"
       ],
       "@lib/*": [
         "src/lib/*"
       ],
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"],
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
   "ts-node": {
     "files": true
   }
