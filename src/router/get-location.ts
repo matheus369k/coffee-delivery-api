@@ -1,6 +1,10 @@
-import { paramsSchema } from '@/_types/schema.js';
 import { prisma } from '@/lib/prisma.js';
 import { Express, Request, Response } from 'express';
+import { z } from 'zod';
+
+const paramsSchema = z.object({
+    userId: z.string().uuid(),
+});
 
 export function getLocation(app: Express) {
     app.get('/location/:userId', async (request: Request, response: Response) => {

@@ -1,7 +1,10 @@
 import { Express, Request, Response } from 'express';
-import { paramsSchema } from '_types/schema.js';
 import { prisma } from '@lib/prisma.js';
 import { z } from 'zod';
+
+const paramsSchema = z.object({
+    userId: z.string().uuid(),
+});
 
 const bodyZodType = z.object({
     form_of_payment: z.string().min(4),

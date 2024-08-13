@@ -1,6 +1,16 @@
 import { Express, Request, Response } from 'express';
-import { addressSchema } from '_types/schema.js';
 import { prisma } from '@lib/prisma.js';
+import { z } from 'zod';
+
+const addressSchema = z.object({
+    cep: z.coerce.string().min(8),
+    street: z.string().min(4),
+    number: z.coerce.number().min(1),
+    complement: z.string(),
+    neighborhood: z.string().min(4),
+    city: z.string().min(4),
+    uf: z.string().min(2),
+});
 
 export function registerAddress(app: Express) {
     app.post('/user/register', async (request: Request, response: Response) => {

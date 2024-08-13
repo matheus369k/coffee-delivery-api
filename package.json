@@ -4,6 +4,7 @@
   "main": "src/server.ts",
   "type": "module",
   "scripts": {
+    "predev": "npm run lint",
     "dev": "tsx watch src/server.ts",
     "lint": "eslint src --fix"
   },

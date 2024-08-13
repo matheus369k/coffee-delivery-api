@@ -23,9 +23,11 @@
       "@lib/*": [
         "src/lib/*"
       ],
-      "_types/*": [
-        "src/_types/*"
-      ],
     }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+  "ts-node": {
+    "files": true
   }
 }
