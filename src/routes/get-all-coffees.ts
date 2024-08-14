@@ -5,7 +5,7 @@ export async function getAllCoffees(request_: Request, response: Response) {
     const coffees = await prisma.coffee.findMany();
 
     if (!coffees) {
-        throw new Error('Coffees not found');
+        return response.send({ message: 'Coffees not found' });
     }
 
     response.send({ coffees: coffees });

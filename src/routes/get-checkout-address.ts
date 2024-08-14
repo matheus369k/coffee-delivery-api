@@ -14,7 +14,7 @@ export async function getCheckoutAddress(request: Request, response: Response) {
     });
 
     if (!addressUser) {
-        throw new Error('addressUser not found');
+        return response.send({ message: 'addressUser not found' });
     }
 
     response.send({ addressUser: addressUser });

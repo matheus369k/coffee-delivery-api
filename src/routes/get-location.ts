@@ -18,7 +18,7 @@ export async function getLocation(request: Request, response: Response) {
     });
 
     if (!addressUser) {
-        throw new Error('AddressUser not found');
+        return response.send({ message: 'AddressUser not found' });
     }
 
     response.send({ userLocation: addressUser });

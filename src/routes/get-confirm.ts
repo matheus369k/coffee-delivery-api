@@ -18,7 +18,7 @@ export async function getConfirm(request: Request, response: Response) {
     });
 
     if (!shoppingCoffeeList) {
-        throw new Error('AddressUser not found');
+        return response.send('AddressUser not found');
     }
 
     response.send({ shoppingCoffeeList: shoppingCoffeeList });

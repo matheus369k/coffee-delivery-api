@@ -27,7 +27,7 @@ export async function registerShoppingCoffees(request: Request, response: Respon
     });
 
     if (!addressUsers) {
-        throw new Error('User not found');
+        return response.status(404).send({ message: 'User not found' });
     }
 
     const shoppingCoffeeList = await prisma.shoppingCoffeeList.create({
@@ -41,6 +41,10 @@ export async function registerShoppingCoffees(request: Request, response: Respon
             addressUserId: addressUsers.id,
         },
     });
+
+    if (!shoppingCoffeeList) {
+        return response.send({ message: 'ShoppingCoffeeList not create' });
+    }
 
     response.send({ shoppingCoffeeListId: shoppingCoffeeList.id });
 }

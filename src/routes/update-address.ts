@@ -25,10 +25,10 @@ export async function updateAddress(request: Request, response: Response) {
     });
 
     if (!addressUsers) {
-        throw new Error('AddressUser not found');
+        return response.send({ message: 'AddressUser not found' });
     }
 
-    await prisma.addressUser.update({
+    const updateAddress = await prisma.addressUser.update({
         where: { id: userId },
         data: {
             cep,
@@ -40,6 +40,10 @@ export async function updateAddress(request: Request, response: Response) {
             uf,
         },
     });
+
+    if (!updateAddress) {
+        return response.status(404).send({ message: 'Address not update' });
+    }
 
     response.send({ userId: addressUsers.id });
 }

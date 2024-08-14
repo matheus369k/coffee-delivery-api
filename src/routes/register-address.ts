@@ -28,7 +28,7 @@ export async function registerAddress(request: Request, response: Response) {
     });
 
     if (!addressUser) {
-        throw new Error('AddressUser not found');
+        return response.send({ message: 'AddressUser not create' });
     }
 
     response.send({ addressUserId: addressUser.id });

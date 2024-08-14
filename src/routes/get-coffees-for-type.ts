@@ -18,7 +18,7 @@ export async function getCoffeesForType(request: Request, response: Response) {
     });
 
     if (!coffees) {
-        throw new Error('Coffees Not found');
+        return response.send({ message: 'Coffees Not found' });
     }
 
     response.send({ coffees: coffees });

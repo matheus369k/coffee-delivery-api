@@ -20,7 +20,7 @@ export async function registerManyCoffees(request: Request, response: Response) 
     });
 
     if (!coffees) {
-        throw new Error('Coffee not found');
+        return response.send({ message: 'Coffees not creates' });
     }
 
     response.send({ coffeesCount: coffees.count });
