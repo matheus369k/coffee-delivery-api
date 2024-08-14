@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
 import { prisma } from '@lib/prisma.js';
 import { z } from 'zod';
+import { ClientError } from '@/errors/client-error.js';
+import { errorHandler } from '@/error-handler.js';
 
 const addressSchema = z.object({
-    cep: z.coerce.string().min(8),
+    cep: z.string().min(8),
     street: z.string().min(4),
     number: z.coerce.number().min(1),
     complement: z.string(),
@@ -13,23 +15,27 @@ const addressSchema = z.object({
 });
 
 export async function registerAddress(request: Request, response: Response) {
-    const { cep, city, complement, neighborhood, number, street, uf } = addressSchema.parse(request.body);
+    try {
+        const { cep, city, complement, neighborhood, number, street, uf } = addressSchema.parse(request.body);
 
-    const addressUser = await prisma.addressUser.create({
-        data: {
-            cep,
-            city,
-            complement,
-            neighborhood,
-            number,
-            street,
-            uf,
-        },
-    });
+        const addressUser = await prisma.addressUser.create({
+            data: {
+                cep,
+                city,
+                complement,
+                neighborhood,
+                number,
+                street,
+                uf,
+            },
+        });
 
-    if (!addressUser) {
-        return response.send({ message: 'AddressUser not create' });
+        if (!addressUser) {
+            throw new ClientError('AddressUser not create');
+        }
+
+        response.send({ addressUserId: addressUser.id });
+    } catch (error) {
+        errorHandler(error, response);
     }
-
-    response.send({ addressUserId: addressUser.id });
 }

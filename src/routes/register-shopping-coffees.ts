@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { prisma } from '@lib/prisma.js';
 import { z } from 'zod';
+import { errorHandler } from '@/error-handler.js';
+import { ClientError } from '@/errors/client-error.js';
 
 const paramsSchema = z.object({
     userId: z.string().uuid(),
@@ -19,32 +21,36 @@ const bodyZodType = z.object({
 });
 
 export async function registerShoppingCoffees(request: Request, response: Response) {
-    const { userId } = paramsSchema.parse(request.params);
-    const { coffees_list, form_of_payment } = bodyZodType.parse(request.body);
+    try {
+        const { userId } = paramsSchema.parse(request.params);
+        const { coffees_list, form_of_payment } = bodyZodType.parse(request.body);
 
-    const addressUsers = await prisma.addressUser.findUnique({
-        where: { id: userId },
-    });
+        const addressUsers = await prisma.addressUser.findUnique({
+            where: { id: userId },
+        });
 
-    if (!addressUsers) {
-        return response.status(404).send({ message: 'User not found' });
-    }
+        if (!addressUsers) {
+            throw new ClientError('User not found');
+        }
 
-    const shoppingCoffeeList = await prisma.shoppingCoffeeList.create({
-        data: {
-            form_of_payment,
-            boyCoffees: {
-                createMany: {
-                    data: [...coffees_list],
+        const shoppingCoffeeList = await prisma.shoppingCoffeeList.create({
+            data: {
+                form_of_payment,
+                boyCoffees: {
+                    createMany: {
+                        data: [...coffees_list],
+                    },
                 },
+                addressUserId: addressUsers.id,
             },
-            addressUserId: addressUsers.id,
-        },
-    });
+        });
 
-    if (!shoppingCoffeeList) {
-        return response.send({ message: 'ShoppingCoffeeList not create' });
+        if (!shoppingCoffeeList) {
+            throw new ClientError('ShoppingCoffeeList not create');
+        }
+
+        response.send({ shoppingCoffeeListId: shoppingCoffeeList.id });
+    } catch (error) {
+        errorHandler<typeof error>(error, response);
     }
-
-    response.send({ shoppingCoffeeListId: shoppingCoffeeList.id });
 }
