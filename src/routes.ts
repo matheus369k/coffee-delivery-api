@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { getLocation } from './routes/get-location.js';
 import { getAllCoffees } from './routes/get-all-coffees.js';
-import { getCoffeesForType } from './routes/get-coffees-for-type.js';
+import { getCoffeesSlug } from './routes/get-coffees-slug.js';
 import { getConfirm } from './routes/get-confirm.js';
 import { getCheckoutAddress } from './routes/get-checkout-address.js';
 import { registerManyCoffees } from './routes/register-many-coffees.js';
@@ -11,16 +11,16 @@ import { updateAddress } from './routes/update-address.js';
 
 const routes = Router();
 
-routes.get('/location/:userId', getLocation);
+routes.get('/location/:addressId', getLocation);
 routes.get('/coffees', getAllCoffees);
-routes.get('/coffees/:type', getCoffeesForType);
+routes.get('/coffees/:slug', getCoffeesSlug);
 routes.get('/shopping/:shoppingId', getConfirm);
 routes.get('/user/:addressId', getCheckoutAddress);
 
 routes.post('/coffees', registerManyCoffees);
 routes.post('/user/register', registerAddress);
-routes.post('/shopping/:userId', registerShoppingCoffees);
+routes.post('/shopping/:addressId', registerShoppingCoffees);
 
-routes.put('/user/:userId', updateAddress);
+routes.put('/user/:addressId', updateAddress);
 
 export { routes };

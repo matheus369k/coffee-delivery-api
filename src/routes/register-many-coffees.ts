@@ -8,6 +8,7 @@ const bodySchema = z.array(
     z.object({
         name: z.string().min(4),
         tags: z.array(z.string().min(4)),
+        slugs: z.array(z.string().min(4)),
         image: z.string().url(),
         description: z.string().min(24),
         price: z.string().min(2),

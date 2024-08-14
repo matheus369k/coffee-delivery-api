@@ -18,7 +18,7 @@ export async function registerAddress(request: Request, response: Response) {
     try {
         const { cep, city, complement, neighborhood, number, street, uf } = addressSchema.parse(request.body);
 
-        const addressUser = await prisma.addressUser.create({
+        const address = await prisma.address.create({
             data: {
                 cep,
                 city,
@@ -30,11 +30,11 @@ export async function registerAddress(request: Request, response: Response) {
             },
         });
 
-        if (!addressUser) {
-            throw new ClientError('AddressUser not create');
+        if (!address) {
+            throw new ClientError('Address not create');
         }
 
-        response.send({ addressUserId: addressUser.id });
+        response.send({ addressId: address.id });
     } catch (error) {
         errorHandler(error, response);
     }

@@ -9,6 +9,7 @@ datasource db {
 
 model Coffee {
   id          String   @id @default(uuid())
+  slugs       String[]
   name        String
   tags        String[]
   image       String
@@ -18,7 +19,7 @@ model Coffee {
   @@map("coffees")
 }
 
-model AddressUser {
+model Address {
   id           String @id @default(uuid())
   cep          String
   street       String
@@ -28,33 +29,33 @@ model AddressUser {
   city         String
   uf           String
 
-  shopping_coffee_list ShoppingCoffeeList[]
+  shopping Shopping[]
 
-  @@map("address_users")
+  @@map("addresses")
 }
 
-model BoyCoffee {
+model Shopping {
+  id              String   @id @default(uuid())
+  create_at       DateTime @default(now())
+  form_of_payment String
+
+  buy Buy[]
+
+  address_id String
+  addresses  Address @relation(fields: [address_id], references: [id])
+
+  @@map("shopping")
+}
+
+model Buy {
   id          String @id @default(uuid())
   name        String
   image       String
   total_price String
   count       Int
 
-  shoppingCoffeeListId String
-  ShoppingCoffeeList   ShoppingCoffeeList @relation(fields: [shoppingCoffeeListId], references: [id])
+  shopping_id String
+  shopping    Shopping @relation(fields: [shopping_id], references: [id])
 
-  @@map("boy_coffees")
-}
-
-model ShoppingCoffeeList {
-  id              String   @id @default(uuid())
-  create_at       DateTime @default(now())
-  form_of_payment String
-
-  boyCoffees    BoyCoffee[]
-  
-  addressUserId String
-  AddressUser   AddressUser @relation(fields: [addressUserId], references: [id])
-
-  @@map("shopping_coffee_list")
+  @@map("buy")
 }

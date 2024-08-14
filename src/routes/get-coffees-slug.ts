@@ -5,17 +5,17 @@ import { errorHandler } from '@/error-handler.js';
 import { ClientError } from '@/errors/client-error.js';
 
 const paramsZodType = z.object({
-    type: z.string().min(4),
+    slug: z.string().min(4),
 });
 
-export async function getCoffeesForType(request: Request, response: Response) {
+export async function getCoffeesSlug(request: Request, response: Response) {
     try {
-        const { type } = paramsZodType.parse(request.params);
+        const { slug } = paramsZodType.parse(request.params);
 
         const coffees = await prisma.coffee.findMany({
             where: {
-                tags: {
-                    has: type,
+                slugs: {
+                    has: slug,
                 },
             },
         });

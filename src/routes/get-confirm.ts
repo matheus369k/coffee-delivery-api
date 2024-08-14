@@ -12,18 +12,18 @@ export async function getConfirm(request: Request, response: Response) {
     try {
         const { shoppingId } = paramsSchema.parse(request.params);
 
-        const shoppingCoffeeList = await prisma.shoppingCoffeeList.findUnique({
+        const shopping = await prisma.shopping.findUnique({
             where: { id: shoppingId },
             select: {
                 form_of_payment: true,
-                AddressUser: true,
+                address_id: true,
             },
         });
 
-        if (!shoppingCoffeeList) {
-            throw new ClientError('AddressUser not found');
+        if (!shopping) {
+            throw new ClientError('Shopping not found');
         }
-        response.send({ shoppingCoffeeList: shoppingCoffeeList });
+        response.send({ shopping: shopping });
     } catch (error) {
         errorHandler(error, response);
     }

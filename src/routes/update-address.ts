@@ -5,7 +5,7 @@ import { errorHandler } from '@/error-handler.js';
 import { ClientError } from '@/errors/client-error.js';
 
 export const paramsSchema = z.object({
-    userId: z.string().uuid(),
+    addressId: z.string().uuid(),
 });
 
 export const addressSchema = z.object({
@@ -21,17 +21,18 @@ export const addressSchema = z.object({
 export async function updateAddress(request: Request, response: Response) {
     try {
         const { cep, city, complement, neighborhood, number, street, uf } = addressSchema.parse(request.body);
-        const { userId } = paramsSchema.parse(request.params);
+        const { addressId } = paramsSchema.parse(request.params);
 
-        const addressUsers = await prisma.addressUser.findUnique({
-            where: { id: userId },
+        const address = await prisma.address.findUnique({
+            where: { id: addressId },
         });
 
-        if (!addressUsers) {
+        if (!address) {
             throw new ClientError('AddressUser not found');
         }
-        const updateAddress = await prisma.addressUser.update({
-            where: { id: userId },
+
+        await prisma.address.update({
+            where: { id: addressId },
             data: {
                 cep,
                 city,
@@ -43,10 +44,7 @@ export async function updateAddress(request: Request, response: Response) {
             },
         });
 
-        if (!updateAddress) {
-            throw new ClientError('Address not update');
-        }
-        response.send({ userId: addressUsers.id });
+        response.send({ addressId: address.id });
     } catch (error) {
         errorHandler(error, response);
     }

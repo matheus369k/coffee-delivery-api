@@ -5,26 +5,26 @@ import { errorHandler } from '@/error-handler.js';
 import { ClientError } from '@/errors/client-error.js';
 
 const paramsSchema = z.object({
-    userId: z.string().uuid(),
+    addressId: z.string().uuid(),
 });
 
 export async function getLocation(request: Request, response: Response) {
     try {
-        const { userId } = paramsSchema.parse(request.params);
+        const { addressId } = paramsSchema.parse(request.params);
 
-        const addressUser = await prisma.addressUser.findUnique({
-            where: { id: userId },
+        const location = await prisma.address.findUnique({
+            where: { id: addressId },
             select: {
                 city: true,
                 uf: true,
             },
         });
 
-        if (!addressUser) {
-            throw new ClientError('AddressUser not found');
+        if (!location) {
+            throw new ClientError('Location not found');
         }
 
-        response.send({ userLocation: addressUser });
+        response.send({ userLocation: location });
     } catch (error) {
         errorHandler(error, response);
     }

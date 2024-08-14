@@ -12,14 +12,14 @@ export async function getCheckoutAddress(request: Request, response: Response) {
     try {
         const { addressId } = paramsZodType.parse(request.params);
 
-        const addressUser = await prisma.addressUser.findUnique({
+        const address = await prisma.address.findUnique({
             where: { id: addressId },
         });
-        if (!addressUser) {
+        if (!address) {
             throw new ClientError('addressUser not found');
         }
 
-        response.send({ addressUser: addressUser });
+        response.send({ address: address });
     } catch (error) {
         errorHandler(error, response);
     }

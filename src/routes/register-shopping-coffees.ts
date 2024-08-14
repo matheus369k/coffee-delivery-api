@@ -5,7 +5,7 @@ import { errorHandler } from '@/error-handler.js';
 import { ClientError } from '@/errors/client-error.js';
 
 const paramsSchema = z.object({
-    userId: z.string().uuid(),
+    addressId: z.string().uuid(),
 });
 
 const bodyZodType = z.object({
@@ -22,34 +22,34 @@ const bodyZodType = z.object({
 
 export async function registerShoppingCoffees(request: Request, response: Response) {
     try {
-        const { userId } = paramsSchema.parse(request.params);
+        const { addressId } = paramsSchema.parse(request.params);
         const { coffees_list, form_of_payment } = bodyZodType.parse(request.body);
 
-        const addressUsers = await prisma.addressUser.findUnique({
-            where: { id: userId },
+        const address = await prisma.address.findUnique({
+            where: { id: addressId },
         });
 
-        if (!addressUsers) {
+        if (!address) {
             throw new ClientError('User not found');
         }
 
-        const shoppingCoffeeList = await prisma.shoppingCoffeeList.create({
+        const shopping = await prisma.shopping.create({
             data: {
                 form_of_payment,
-                boyCoffees: {
+                buy: {
                     createMany: {
                         data: [...coffees_list],
                     },
                 },
-                addressUserId: addressUsers.id,
+                address_id: address.id,
             },
         });
 
-        if (!shoppingCoffeeList) {
-            throw new ClientError('ShoppingCoffeeList not create');
+        if (!shopping) {
+            throw new ClientError('Shopping not create');
         }
 
-        response.send({ shoppingCoffeeListId: shoppingCoffeeList.id });
+        response.send({ shoppingId: shopping.id });
     } catch (error) {
         errorHandler<typeof error>(error, response);
     }
