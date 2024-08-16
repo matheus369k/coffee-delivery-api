@@ -8,7 +8,7 @@ const addressSchema = z.object({
     cep: z.string().min(8),
     street: z.string().min(4),
     number: z.coerce.number().min(1),
-    complement: z.string(),
+    complement: z.optional(z.string()),
     neighborhood: z.string().min(4),
     city: z.string().min(4),
     uf: z.string().min(2),
@@ -16,7 +16,7 @@ const addressSchema = z.object({
 
 export async function registerAddress(request: Request, response: Response) {
     try {
-        const { cep, city, complement, neighborhood, number, street, uf } = addressSchema.parse(request.body);
+        const { cep, city, complement = '', neighborhood, number, street, uf } = addressSchema.parse(request.body);
 
         const address = await prisma.address.create({
             data: {
