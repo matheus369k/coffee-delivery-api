@@ -16,7 +16,7 @@ export async function getConfirm(request: Request, response: Response) {
             where: { id: shoppingId },
             select: {
                 form_of_payment: true,
-                address_id: true,
+                addresses: true,
             },
         });
 
