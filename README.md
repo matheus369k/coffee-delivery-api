@@ -4,6 +4,8 @@
 
   [Descrição](#descrição)
   |
+  [Demo](#demo-gif)
+  |
   [Iniciando](#iniciando)
   |
   [Dependências](#dependências)
@@ -15,7 +17,8 @@
 </div>
 
 <div align='center'>
-  <img src='https://img.shields.io/github/license/matheus369k/coffee-**delivery-api.svg' />
+  <img src='https://img.shields.io/github/license/matheus369k/coffee-delivery-api.svg'/>
+  <img src='https://img.shields.io/github/watchers/matheus369k/coffee-delivery-api.svg' />
 </div>
 
 ## Demo Gif
