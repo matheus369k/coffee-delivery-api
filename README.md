@@ -41,6 +41,7 @@ A aplicação e o backend do repositório [coffee-delivery](https://github.com/m
 
 - Git - [baixar](https://git-scm.com)
 - Node - [baixar](https://nodejs.org/pt)
+- Docker ( Recomendado ) - [baixar](https://www.docker.com/)
 - VSCode ( Recomendado ) - [baixar](https://code.visualstudio.com)
 - Front-end ( Recomendado ) - [repositório](https://github.com/matheus369k/coffee-delivery)
 
@@ -48,18 +49,35 @@ A aplicação e o backend do repositório [coffee-delivery](https://github.com/m
 
 Para testar o projeto na sua maquina, recomenda-se clonar o repositório em uma pasta local, como seguinte comando.
 
+### Instalando o projeto
+
 Digite no terminal
 
 __HTTPS__
 ```
 $ git clone https://github.com/matheus369k/coffee-delivery-api.git
 ```
-
 Acesse o projeto com seguinte comando 
-
 ```
 $ coffee-delivery-api
 ```
+Instalando as dependências
+```
+$ npm install
+```
+Se for usar o docker instale as seguintes Extensões no vsCode.
+- Dev Containers
+- Docker
+
+inicie o docker e insira o comando
+```
+$ docker compose up -d
+```
+logo apos use a seguinte url para o banco de dados
+```
+DATABASE_URL="postgresql://docker:docker@localhost:5432/coffeedelivery"
+```
+### Configurando
 
 crie um arquivo __.env__ e adicione as variáveis ambiente a seguir
 
@@ -71,42 +89,18 @@ DATABASE_URL="postgresql://usuario:senha@host:porta/nome_do_banco
 // Port o valor padrão e 3333
 PORT=3333
 ```
-
-Acesse o terminal do projeto e digite 
-
+Esse comando ira criar as tabela no banco de dados.
 ```
-$ npm install
+$ npm run prisma:dev
 ```
-
-Logo apos digite
-
+Para inserir os dados no banco use o comando a seguir
 ```
-$ npx prisma generate dev
+$ npm run seed
 ```
-
-E por fim digite...
-
+Aplicação pronta, use o comando abaixo para rodar a aplicação
 ```
 $ npm run dev
 ```
-para rodar aplicação, agora voce pode inserir na rota:
-```
-Metodo: Post 
-Rota: /coffees 
-``` 
-os dados disponibilizados em __[db.json](./db.json)__ ou criar seu próprios dados de produto seguindo a estrutura abaixo
-
-```
-{
-    "name": "Árabe",
-    "tags": ["Especial"],
-    "slugs": ["especial"],
-    "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/%C3%A1rabe.png?raw=true",
-    "description": "Bebida preparada com grãos de café árabe e especiarias",
-    "price": "9,90"
-}
-```
-
 ## Rotas
 __Método HTTP GET__<br/>
 Coletar todos os produtos
