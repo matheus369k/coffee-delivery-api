@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "tsx watch src/server.ts",
         "prisma:dev": "npx prisma migrate dev",
+        "seed": "tsx src/lib/seed.ts",
         "lint": "eslint src --fix"
     },
     "devDependencies": {
