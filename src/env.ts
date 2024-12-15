@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const envSchema = z.object({
-    DATABASE_URL: z.string().url(),
+    PG_DATABASE_URL: z.string().url(),
+    MD_DATABASE_URL: z.string().url(),
     PORT: z.coerce.number().default(3333),
 });
 

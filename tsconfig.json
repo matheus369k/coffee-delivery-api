@@ -27,6 +27,7 @@
   },
   "include": [
     "src/**/*",
+    "mongo/**/*"
   ],
   "exclude": [
     "node_modules"
