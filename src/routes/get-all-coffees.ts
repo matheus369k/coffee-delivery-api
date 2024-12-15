@@ -11,7 +11,7 @@ export async function getAllCoffees(request_: Request, response: Response) {
             throw new ClientError('Coffees not found');
         }
 
-        response.send({ coffees: coffees });
+        response.send({ coffees });
     } catch (error) {
         errorHandler(error, response);
     }
