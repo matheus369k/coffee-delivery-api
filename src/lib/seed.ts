@@ -1,7 +1,4 @@
-import { mongoDatabase } from '@/mongo/models/index.js';
-import { mongooseConnect } from '@/mongo/mongoose.js';
 import { prisma } from './prisma.js';
-import mongoose from 'mongoose';
 
 async function seed() {
     const data = [
@@ -127,16 +124,6 @@ async function seed() {
             console.log('postgresql coffees created');
         }),
     ]);
-
-    await Promise.all([
-        mongooseConnect(),
-        mongoDatabase.Coffee.deleteMany({}).then(() => {
-            console.log('mongo coffees deleted');
-        }),
-        mongoDatabase.Coffee.insertMany(data).then(() => {
-            console.log('mongo coffees created');
-        }),
-    ]);
 }
 
-seed().finally(() => mongoose.disconnect());
+seed().finally();
