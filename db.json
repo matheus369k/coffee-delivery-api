@@ -1,114 +1,128 @@
 [
     {
-        "name": "Expresso Tradicional",
-        "tags": ["Tradicional"],
-        "slugs": ["tradicional"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/expresso-tradicional.png?raw=true",
-        "description": "O tradicional café feito com água quente e grãos moídos",
-        "price": "9,90"
-    },
-    {
-        "name": "Expresso Americano",
-        "tags": ["Tradicional"],
-        "slugs": ["tradicional"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/expresso-americano.png?raw=true",
-        "description": "Expresso diluído, menos intenso que o tradicional",
-        "price": "9,90"
-    },
-    {
-        "name": "Expresso Cremoso",
-        "tags": ["Tradicional"],
-        "slugs": ["tradicional"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/expresso-cremoso.png?raw=true",
-        "description": "Café expresso tradicional com espuma cremosa",
-        "price": "9,90"
-    },
-    {
-        "name": "Expresso Gelado",
-        "tags": ["Tradicional", "Gelado"],
-        "slugs": ["tradicional", "gelado"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/expresso-gelado.png?raw=true",
-        "description": "Bebida preparada com café expresso e cubos de gelo",
-        "price": "9,90"
-    },
-    {
+        "id": "10bf2f9f-11f3-4d2a-b422-c9f8489a9379",
         "name": "Café com Leite",
         "tags": ["Tradicional", "Com Leite"],
-        "slugs": ["tradicional", "com-leite"],
         "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/caf%C3%A9-com-leite.png?raw=true",
         "description": "Meio a meio de expresso tradicional com leite vaporizado",
-        "price": "9,90"
+        "price": "9,90",
+        "slugs": ["tradicional", "com-leite"]
     },
     {
+        "id": "44e5577c-c6e7-4bb5-b155-bfb3fc8bc1e6",
         "name": "Latte",
         "tags": ["Tradicional", "Com Leite"],
-        "slugs": ["tradicional", "com-leite"],
         "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/latte.png?raw=true",
         "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
-        "price": "9,90"
+        "price": "9,90",
+        "slugs": ["tradicional", "com-leite"]
     },
     {
-        "name": "Capuccino",
-        "tags": ["Tradicional", "Com Leite"],
-        "slugs": ["tradicional", "com-leite"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/capuccino.png?raw=true",
-        "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
-        "price": "9,90"
-    },
-    {
-        "name": "Macchiato",
-        "tags": ["Tradicional", "Com Leite"],
-        "slugs": ["tradicional", "com-leite"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/macchiato.png?raw=true",
-        "description": "Café expresso misturado com um pouco de leite quente e espuma",
-        "price": "9,90"
-    },
-    {
-        "name": "Mocaccino",
-        "tags": ["Tradicional", "Com Leite"],
-        "slugs": ["tradicional", "com-leite"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/mocaccino.png?raw=true",
-        "description": "Café expresso com calda de chocolate, pouco leite e espuma",
-        "price": "9,90"
-    },
-    {
-        "name": "Chocolate Quente",
-        "tags": ["Especial", "Com Leite"],
-        "slugs": ["especial", "com-leite"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/chocolate-quente.png?raw=true",
-        "description": "Bebida feita com chocolate dissolvido no leite quente e café",
-        "price": "9,90"
-    },
-    {
-        "name": "Cubano",
-        "tags": ["Especial", "Alcoólico", "Gelado"],
-        "slugs": ["especial", "alcoolico", "gelado"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/cubano.png?raw=true",
-        "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
-        "price": "9,90"
-    },
-    {
-        "name": "Havaiano",
-        "tags": ["Especial"],
-        "slugs": ["especial"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/havaiano.png?raw=true",
-        "description": "Bebida adocicada preparada com café e leite de coco",
-        "price": "9,90"
-    },
-    {
-        "name": "Árabe",
-        "tags": ["Especial"],
-        "slugs": ["especial"],
-        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/%C3%A1rabe.png?raw=true",
-        "description": "Bebida preparada com grãos de café árabe e especiarias",
-        "price": "9,90"
-    },
-    {
+        "id": "465e1cff-a716-45b6-9a3f-0b1975989636",
         "name": "Irlandês",
         "tags": ["Especial", "Alcoólico"],
-        "slugs": ["especial", "alcoolico"],
         "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/irland%C3%AAs.png?raw=true",
         "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
-        "price": "9,90"
+        "price": "9,90",
+        "slugs": ["especial", "alcoolico"]
+    },
+    {
+        "id": "4708ac04-c5c0-41d0-9c4e-e538b44ce524",
+        "name": "Expresso Americano",
+        "tags": ["Tradicional"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/expresso-americano.png?raw=true",
+        "description": "Expresso diluído, menos intenso que o tradicional",
+        "price": "9,90",
+        "slugs": ["tradicional"]
+    },
+    {
+        "id": "5e03cfec-20dc-4c19-afc7-69094c8b3221",
+        "name": "Expresso Cremoso",
+        "tags": ["Tradicional"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/expresso-cremoso.png?raw=true",
+        "description": "Café expresso tradicional com espuma cremosa",
+        "price": "9,90",
+        "slugs": ["tradicional"]
+    },
+    {
+        "id": "6b439488-65cb-4bd6-b925-c1416e35217d",
+        "name": "Cubano",
+        "tags": ["Especial", "Alcoólico", "Gelado"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/cubano.png?raw=true",
+        "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
+        "price": "9,90",
+        "slugs": ["especial", "alcoolico", "gelado"]
+    },
+    {
+        "id": "75c4efd7-99fd-4d58-b0ff-adec07971ba0",
+        "name": "Havaiano",
+        "tags": ["Especial"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/havaiano.png?raw=true",
+        "description": "Bebida adocicada preparada com café e leite de coco",
+        "price": "9,90",
+        "slugs": ["especial"]
+    },
+    {
+        "id": "89bcf49d-dd3d-4b2d-97a2-c22c562e1537",
+        "name": "Expresso Gelado",
+        "tags": ["Tradicional", "Gelado"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/expresso-gelado.png?raw=true",
+        "description": "Bebida preparada com café expresso e cubos de gelo",
+        "price": "9,90",
+        "slugs": ["tradicional", "gelado"]
+    },
+    {
+        "id": "8d1281cf-fa74-411c-bc18-6951760c3eb4",
+        "name": "Macchiato",
+        "tags": ["Tradicional", "Com Leite"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/macchiato.png?raw=true",
+        "description": "Café expresso misturado com um pouco de leite quente e espuma",
+        "price": "9,90",
+        "slugs": ["tradicional", "com-leite"]
+    },
+    {
+        "id": "bcc27723-3d0b-4917-9766-252755a2a1ed",
+        "name": "Mocaccino",
+        "tags": ["Tradicional", "Com Leite"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/mocaccino.png?raw=true",
+        "description": "Café expresso com calda de chocolate, pouco leite e espuma",
+        "price": "9,90",
+        "slugs": ["tradicional", "com-leite"]
+    },
+    {
+        "id": "be298d7c-10b8-4810-a598-bb5f663d4373",
+        "name": "Capuccino",
+        "tags": ["Tradicional", "Com Leite"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/capuccino.png?raw=true",
+        "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
+        "price": "9,90",
+        "slugs": ["tradicional", "com-leite"]
+    },
+    {
+        "id": "d0d9bfea-8ce3-4640-a061-f8ee088f510a",
+        "name": "Expresso Tradicional",
+        "tags": ["Tradicional"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/expresso-tradicional.png?raw=true",
+        "description": "O tradicional café feito com água quente e grãos moídos",
+        "price": "9,90",
+        "slugs": ["tradicional"]
+    },
+    {
+        "id": "f576a46e-710a-47c2-be54-609a1793ecb6",
+        "name": "Árabe",
+        "tags": ["Especial"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/%C3%A1rabe.png?raw=true",
+        "description": "Bebida preparada com grãos de café árabe e especiarias",
+        "price": "9,90",
+        "slugs": ["especial"]
+    },
+    {
+        "id": "f78ad290-8a26-4e14-bad6-b1ab5d68eb9f",
+        "name": "Chocolate Quente",
+        "tags": ["Especial", "Com Leite"],
+        "image": "https://github.com/matheus369k/matheus369k.github.io/blob/main/coffee-delivery-images/chocolate-quente.png?raw=true",
+        "description": "Bebida feita com chocolate dissolvido no leite quente e café",
+        "price": "9,90",
+        "slugs": ["especial", "com-leite"]
     }
 ]
