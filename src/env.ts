@@ -5,7 +5,6 @@ dotenv.config();
 
 const envSchema = z.object({
     PG_DATABASE_URL: z.string().url(),
-    GH_DATABASE_URL: z.string().url(),
     PORT: z.coerce.number().default(3333),
 });
 
