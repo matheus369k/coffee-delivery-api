@@ -1,0 +1,106 @@
+# Variables
+@base = http://localhost:3333
+@addressId = {{UpdateUser.response.body.addressId}}
+@shoppingId = {{CreateShopping.response.body.shoppingId}}
+
+### HearthChecked
+# @name HearthChecked
+GET {{base}}/hearth
+
+### CreateUser
+# @name CreateUser
+POST {{base}}/user/register
+Content-Type: application/json
+
+{
+  "cep": "55768-000",
+  "street": "R. dom pedro segundo",
+  "number": 456,
+  "complement": "Casa branca com faixa pretas",
+  "neighborhood": "Morumbi",
+  "city": "São Paulo",
+  "uf": "SP"
+}
+
+### GetUser 
+# @name GetUser
+GET {{base}}/user/{{addressId}}
+
+### UpdateUser
+# @name UpdateUser
+PUT {{base}}/user/{{addressId}}
+Content-Type: application/json
+
+{
+  "cep": "55768-000",
+  "street": "R. dom pedro segundo",
+  "number": 457,
+  "complement": "Casa branca com faixa pretas",
+  "neighborhood": "Morumbi",
+  "city": "Rio de janeiro",
+  "uf": "RJ"
+}
+
+### CreateCoffee
+# @name CreateCoffee
+POST {{base}}/coffees
+Content-Type: application/json
+
+
+[
+  {
+    "name": "Café Brasileiro",
+    "tags": ["Amargo", "Quente"],
+    "slugs": ["cafe-brasileiro", "amargo", "quente"],
+    "image": "http://coffee-delivery.com/image/exemple.png",
+    "description": "Mantenha-se ativo e preparado para um dia produtivo.",
+    "price": "13.99"
+  },
+  {
+    "name": "Café Americano",
+    "tags": ["Com Leito", "Quente"],
+    "slugs": ["cafe-americano", "com-leite", "quente"],
+    "image": "http://coffee-delivery.com/image/exemple.png",
+    "description": "Tenha um dia calmo e produtivo.",
+    "price": "19.99"
+  }
+]
+
+### GetCoffees
+# @name GetCoffees
+GET {{base}}/coffees
+
+### GetCoffeesWithSlug
+# @name GetCoffeesWithSlug
+GET {{base}}/coffees/cafe-brasileiro
+
+### GetLocation
+# @name GetLocation
+GET {{base}}/location/{{addressId}}
+
+### CreateShopping
+# @name CreateShopping
+POST {{base}}/shopping/{{addressId}}
+Content-Type: application/json
+
+{
+  "form_of_payment": "Pix",
+  "coffees_list": [
+    {
+      "name": "Café Brasileiro",
+      "image": "http://coffee-delivery.com/image/exemple.png",
+      "total_price": "69.95",
+      "count": 5
+    },
+    {
+      "name": "Café Americano",
+      "image": "http://coffee-delivery.com/image/exemple.png",
+      "total_price": "59.97",
+      "count": 3
+    }
+  ]
+}
+
+### GetShopping
+# @name GetShopping
+GET {{base}}/shopping/{{shoppingId}}

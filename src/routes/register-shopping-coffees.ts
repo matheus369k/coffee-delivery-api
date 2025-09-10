@@ -9,7 +9,7 @@ const paramsSchema = z.object({
 });
 
 const bodyZodType = z.object({
-    form_of_payment: z.string().min(4),
+    form_of_payment: z.string().min(3),
     coffees_list: z.array(
         z.object({
             name: z.string().min(4),

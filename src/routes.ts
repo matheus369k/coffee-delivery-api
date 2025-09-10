@@ -11,6 +11,9 @@ import { updateAddress } from './routes/update-address.js';
 
 const routes = Router();
 
+routes.get('/hearth', (_, res) => {
+    res.send('ok');
+});
 routes.get('/location/:addressId', getLocation);
 routes.get('/coffees', getAllCoffees);
 routes.get('/coffees/:slug', getCoffeesSlug);
