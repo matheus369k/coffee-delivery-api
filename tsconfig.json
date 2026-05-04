@@ -12,25 +12,28 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node16",
-    "baseUrl": "./",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ],
       "@router/*": [
-        "src/routes/*"
+        "./src/routes/*"
       ],
       "@lib/*": [
-        "src/lib/*"
+        "./src/lib/*"
       ],
     }
   },
   "include": [
-    "src/**/*",
-    "mongo/**/*"
+    "src",
+    "mongo"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "build",
+    "dist",
   ],
   "ts-node": {
     "files": true
