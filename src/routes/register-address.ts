@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { prisma } from '@lib/prisma.js';
+import { prisma } from '@lib/prisma';
 import { z } from 'zod';
-import { ClientError } from '@/errors/client-error.js';
-import { errorHandler } from '@/error-handler.js';
+import { ClientError } from '@/errors/client-error';
+import { errorHandler } from '@/error-handler';
 
 const addressSchema = z.object({
     cep: z.string().min(8),

@@ -1,5 +1,5 @@
-import { routes } from './routes.js';
-import { env } from '@/env.js';
+import { routes } from '@/routes';
+import { env } from '@/env';
 import express from 'express';
 import cors from 'cors';
 

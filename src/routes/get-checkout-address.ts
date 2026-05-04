@@ -1,8 +1,8 @@
 import { Response, Request } from 'express';
-import { prisma } from '@/lib/prisma.js';
+import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
-import { errorHandler } from '@/error-handler.js';
-import { ClientError } from '@/errors/client-error.js';
+import { errorHandler } from '@/error-handler';
+import { ClientError } from '@/errors/client-error';
 
 const paramsZodType = z.object({
     addressId: z.string().uuid(),

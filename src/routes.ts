@@ -1,13 +1,13 @@
 import { Router } from 'express';
-import { getLocation } from './routes/get-location.js';
-import { getAllCoffees } from './routes/get-all-coffees.js';
-import { getCoffeesSlug } from './routes/get-coffees-slug.js';
-import { getConfirm } from './routes/get-confirm.js';
-import { getCheckoutAddress } from './routes/get-checkout-address.js';
-import { registerManyCoffees } from './routes/register-many-coffees.js';
-import { registerAddress } from './routes/register-address.js';
-import { registerShoppingCoffees } from './routes/register-shopping-coffees.js';
-import { updateAddress } from './routes/update-address.js';
+import { getLocation } from '@/routes/get-location';
+import { getAllCoffees } from '@/routes/get-all-coffees';
+import { getCoffeesSlug } from '@/routes/get-coffees-slug';
+import { getConfirm } from '@/routes/get-confirm';
+import { getCheckoutAddress } from '@/routes/get-checkout-address';
+import { registerManyCoffees } from '@/routes/register-many-coffees';
+import { registerAddress } from '@/routes/register-address';
+import { registerShoppingCoffees } from '@/routes/register-shopping-coffees';
+import { updateAddress } from '@/routes/update-address';
 
 const routes = Router();
 

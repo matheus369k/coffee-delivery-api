@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { prisma } from '@lib/prisma.js';
 import { z } from 'zod';
 import { errorHandler } from '@/error-handler.js';
-import { ClientError } from '@/errors/client-error.js';
+import { ClientError } from '@/errors/client-error';
 
 const paramsZodType = z.object({
     slug: z.string().min(4),

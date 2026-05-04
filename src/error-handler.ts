@@ -1,4 +1,4 @@
-import { ClientError } from './errors/client-error.js';
+import { ClientError } from '@/errors/client-error';
 import { Response } from 'express';
 import { ZodError } from 'zod';
 

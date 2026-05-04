@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma } from '@lib/prisma.js';
-import { errorHandler } from '@/error-handler.js';
-import { ClientError } from '@/errors/client-error.js';
+import { errorHandler } from '@/error-handler';
+import { ClientError } from '@/errors/client-error';
 
 export async function getAllCoffees(request_: Request, response: Response) {
     try {
