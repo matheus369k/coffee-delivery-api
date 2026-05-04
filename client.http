@@ -1,6 +1,6 @@
 # Variables
 @base = http://localhost:3333
-@addressId = {{UpdateUser.response.body.addressId}}
+@addressId = {{CreateUser.response.body.addressId}}
 @shoppingId = {{CreateShopping.response.body.shoppingId}}
 
 ### HearthChecked
